@@ -1,5 +1,18 @@
-# The code that reads the data from the data files remains unchanged
+# Take each of the data items in the original lists, sanitize them,
+# and then append the sanitized data to the appropriate new list.
+def sanitize(time_string):
+    if '-' in time_string:
+        splitter = '-'
+    elif ':' in time_string:
+        splitter = ':'
+    else:
+        return (time_string)
 
+    (mins, secs) = time_string.split(splitter)
+
+    return (mins + '.' + secs)
+
+# The code that reads the data from the data files remains unchanged
 with open('james.txt') as jaf:
     data = jaf.readline()
 james = data.strip().split(',')
@@ -22,19 +35,6 @@ clean_julie = []
 clean_mikey = []
 clean_sarah = []
 
-def sanitize(time_string):
-    if '-' in time_string:
-        splitter = '-'
-    elif ':' in time_string:
-        splitter = ':'
-    else:
-        return (time_string)
-
-    (mins, secs) = time_string.split(splitter)
-
-    return (mins + '.' + secs)
-# Take each of the data items in the original lists, sanitize them,
-# and then append the sanitized data to the appropriate new list.
 for each_t in james:
     clean_james.append(sanitize(each_t))
 for each_t in julie:
@@ -50,9 +50,21 @@ print(sorted(clean_julie))
 print(sorted(clean_mikey))
 print(sorted(clean_sarah))
 
+# Its's never been so easy to turn something dirty into something clean.
+dirty = ['2-22','2:33','2.44']
+clean = [sanitize(t) for t in dirty]
+print(clean)
 
+# The 'float()' BIF converts to floating point.
+dirty = ['2.22','3.33','4.44']
+clean = [float(s) for s in dirty]
+print(clean)
 
-
+# function chains read from right to left
+# Combining transformations on the data items is supported, too!!
+dirty = ['2-22','2:33','2.44']
+clean = [float(sanitize(t)) for t in dirty]
+print(clean)
 
 
 
