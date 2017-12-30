@@ -28,7 +28,7 @@ mikey = data.strip().split(',')
 with open('sarah.txt') as saf:
     data = saf.readline()
 sarah = data.strip().split(',')
-
+# same operations we can do, using list comprehension (line 74,75,76)
 # create four new, initially empty lists.
 clean_james = []
 clean_julie = []
@@ -53,18 +53,25 @@ print(sorted(clean_sarah))
 # Its's never been so easy to turn something dirty into something clean.
 dirty = ['2-22','2:33','2.44']
 clean = [sanitize(t) for t in dirty]
+# output ['2.22', '2.33', '2.44']
 print(clean)
+
 
 # The 'float()' BIF converts to floating point.
 dirty = ['2.22','3.33','4.44']
 clean = [float(s) for s in dirty]
+# output [2.22, 3.33, 4.44]
 print(clean)
 
 # function chains read from right to left
 # Combining transformations on the data items is supported, too!!
 dirty = ['2-22','2:33','2.44']
 clean = [float(sanitize(t)) for t in dirty]
+# output [2.22, 2.33, 2.44]
 print(clean)
 
 
-
+# list comprehension (without list comprehension you can get same output in line 33-51 )
+print(sorted([sanitize(each_t) for each_t in james]))
+print(sorted([sanitize(each_t) for each_t in julie]))
+print(sorted([sanitize(each_t) for each_t in mikey]))
