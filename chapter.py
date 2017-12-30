@@ -1,3 +1,6 @@
+"""You’ve written a program that reads data from his data files,stores his raw data in lists, sanitizes the data to a
+uniform format, and then sorts and displays the data on screen."""
+
 # Take each of the data items in the original lists, sanitize them,
 # and then append the sanitized data to the appropriate new list.
 def sanitize(time_string):
@@ -28,7 +31,7 @@ mikey = data.strip().split(',')
 with open('sarah.txt') as saf:
     data = saf.readline()
 sarah = data.strip().split(',')
-# same operations we can do, using list comprehension (line 74,75,76)
+# same operations we can do, using list comprehension (line 78-81)
 # create four new, initially empty lists.
 clean_james = []
 clean_julie = []
@@ -75,3 +78,4 @@ print(clean)
 print(sorted([sanitize(each_t) for each_t in james]))
 print(sorted([sanitize(each_t) for each_t in julie]))
 print(sorted([sanitize(each_t) for each_t in mikey]))
+print(sorted([sanitize(each_t) for each_t in sarah]))
