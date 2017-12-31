@@ -1,5 +1,5 @@
 """You’ve written a program that reads data from his data files,stores his raw data in lists, sanitizes the data to a
-uniform format, and then sorts and removed duplications the data on screen."""
+uniform format, and then sorts and  duplicates from list."""
 
 # Take each of the data items in the original lists, sanitize them,
 # and then append the sanitized data to the appropriate new list.
@@ -16,7 +16,6 @@ def sanitize(time_string):
     return (mins + '.' + secs)
 
 # The code that reads the data from the data files remains unchanged
-# Manually removed duplication
 with open('james.txt') as jaf:
     data = jaf.readline()
 james = data.strip().split(',')
@@ -33,7 +32,7 @@ with open('sarah.txt') as saf:
     data = saf.readline()
 sarah = data.strip().split(',')
 
-# Remove the duplicates.
+# remove duplicates values manually
 unique_james = []
 for each_t in james:
     if each_t not in unique_james:
@@ -58,13 +57,12 @@ for each_t in sarah:
         unique_sarah.append(each_t)
 print(unique_sarah[:3])
 
-"""Second method"""
-# The slice is applied to the list produced by 'sorted()'
-# applied sort in build functionality.
+# Using in built set functionality 
 print(sorted(set([sanitize(each_t) for each_t in james]))[0:3])
 print(sorted(set([sanitize(each_t) for each_t in julie]))[0:3])
 print(sorted(set([sanitize(each_t) for each_t in mikey]))[0:3])
 print(sorted(set([sanitize(each_t) for each_t in sarah]))[0:3])
+
 
 
 
